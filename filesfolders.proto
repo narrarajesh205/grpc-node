@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+service FilesFolderService {
+    rpc GetAll (UserData) returns (Data) {}
+    rpc Get (FolderReq) returns (FolderData) {}
+    rpc Insert (File) returns (SaveResponse) {}
+}
+
+message Data {
+    repeated FileAll filesAlls = 1;
+    repeated FoldersAll foldersAlls = 2;
+}
+
+message FolderData {
+    repeated FileAll filesAlls = 1;
+}
+
+message FileAll {
+    string FID = 21;
+    string Name = 2;
+    string TID = 1;
+    string FldrID = 17;
+    string Content = 3;
+    string Status = 18;
+    string CrtdOn = 19;
+    string ModOn = 20;
+    
+}
+
+message FoldersAll {
+    string FldrID = 17;
+    string Name = 2;
+    string TID = 1;
+    string Status = 18;
+    string CrtdOn = 19;
+    string ModOn = 20;
+}
+
+message UserData {
+    string uid = 1;
+    string tid = 2;
+}
+
+message FolderReq {
+    string uid = 1;
+    string tid = 2;
+    string fldrid = 3;
+}
+
+message File {
+    string uid = 14;
+    string tid = 1;
+    string name = 2;
+    string content = 3;
+    string fileName = 4;
+    string fileContent = 5;
+    string folderName = 6;
+    string folderID = 7;
+}
+
+message SaveResponse {
+    string message = 1;
+}
+
+message FileList {
+    repeated File files = 14;
+}
+
+message FileRequestId {
+    string id = 14;
+}
